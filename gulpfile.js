@@ -27,6 +27,7 @@ gulp.task('js', () => {
 gulp.task('less', () => {
     return gulp.src(['app/less/**/*.less', '!app/less/**/_*.less'])
         .pipe(less())
+        .pipe(cssbeautify())
         .pipe(gulp.dest('app/css'))
         .pipe(browserSync.stream())
 });
@@ -55,7 +56,7 @@ function buildcopy() {
 gulp.task('build', gulp.series(cleandist, buildcopy))
 
 gulp.task('watch', () => {
-    gulp.watch('app/less/**/*.less', gulp.series(['less', 'css']))
+    gulp.watch('app/less/**/*.less', gulp.parallel('less'))
     gulp.watch('app/*.html', gulp.parallel('html'))
     gulp.watch('app/**/*.js', gulp.parallel('js'))
 })
