@@ -11,6 +11,7 @@
   "devDependencies": {
     "browser-sync": "^2.26.12",
     "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
     "gulp-cssbeautify": "^2.0.1",
     "gulp-less": "^4.0.1",
     "reset-css": "^5.0.1"
