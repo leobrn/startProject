@@ -25,7 +25,7 @@ gulp.task('html', () => {
 });
 
 gulp.task('js', () => {
-    return gulp.src('app/**/*.js')
+    return gulp.src('app/js/*.js')
         .pipe(newer(srcChange))
         .pipe(gulp.dest(srcChange))
         .pipe(browserSync.stream())
