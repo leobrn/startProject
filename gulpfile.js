@@ -6,7 +6,8 @@ const gulp = require('gulp'),
     newer = require('gulp-newer')
 
 //npm i --save-dev gulp-less browser-sync gulp-cssbeautify reset-css del
-const srcChange = 'app/change' 
+const srcChange = 'app/change',
+    srcStyleLess = 'app/less/**/style.less' 
 
 gulp.task('browser-sync', () => {
     browserSync.init({
@@ -29,6 +30,7 @@ gulp.task('js', () => {
 gulp.task('less', () => {
     return gulp.src(['app/less/**/*.less', '!app/less/**/_*.less'])
         .pipe(newer(srcChange))
+        .pipe(gulp.src(srcStyleLESS))
         .pipe(gulp.dest(srcChange))
         .pipe(less())
         .pipe(cssbeautify())
