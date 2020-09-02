@@ -19,11 +19,15 @@ gulp.task('browser-sync', () => {
 
 gulp.task('html', () => {
     return gulp.src('app/*.html')
+        .pipe(newer(srcChange))
+        .pipe(gulp.dest(srcChange))
         .pipe(browserSync.stream())
 });
 
 gulp.task('js', () => {
     return gulp.src('app/**/*.js')
+        .pipe(newer(srcChange))
+        .pipe(gulp.dest(srcChange))
         .pipe(browserSync.stream())
 });
 
