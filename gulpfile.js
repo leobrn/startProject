@@ -2,9 +2,11 @@ const gulp = require('gulp'),
     less = require('gulp-less'),
     browserSync = require('browser-sync').create(),
     cssbeautify = require('gulp-cssbeautify'),
-    del = require('del')
+    del = require('del'),
+    newer = require('gulp-newer')
 
 //npm i --save-dev gulp-less browser-sync gulp-cssbeautify reset-css del
+const srcChange = 'app/change' 
 
 gulp.task('browser-sync', () => {
     browserSync.init({
@@ -26,6 +28,8 @@ gulp.task('js', () => {
 
 gulp.task('less', () => {
     return gulp.src(['app/less/**/*.less', '!app/less/**/_*.less'])
+        .pipe(newer(srcChange))
+        .pipe(gulp.dest(srcChange))
         .pipe(less())
         .pipe(cssbeautify())
         .pipe(gulp.dest('app/css'))
