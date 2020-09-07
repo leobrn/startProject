@@ -32,7 +32,7 @@ gulp.task('js', () => {
 });
 
 gulp.task('less', () => {
-    return gulp.src(['app/less/**/*.less', '!app/less/**/_*.less'])
+    return gulp.src('app/less/**/*.less')
         .pipe(newer(srcChange))
         .pipe(gulp.src(srcStyleLESS))
         .pipe(gulp.dest(srcChange))
@@ -55,6 +55,7 @@ function cleandist() {
 function buildcopy() {
     return gulp.src([
         'app/css/**/*.css',
+        '!app/css/**/_*.css',
         'app/js/**/*.js',
         'app/img/**/*',
         'app/fonts/**/*',
